@@ -2,11 +2,11 @@ cask "nunago-double-commander" do
   arch arm: "aarch64"
 
   version "1.2.8"
-  sha256 arm:   "7432cf00b9d111730b26ca69d546d40408ca1b8e7ac31253fbc68780799120f0"
+  sha256 arm: "7432cf00b9d111730b26ca69d546d40408ca1b8e7ac31253fbc68780799120f0"
 
   url "https://github.com/doublecmd/doublecmd/releases/download/v#{version}/doublecmd-#{version}.cocoa.#{arch}.dmg"
   name "Double Commander"
-  desc "File manager with two panels side by side. It is inspired by Total Commander and features new ideas."
+  desc "File manager with two panels"
   homepage "https://doublecmd.sourceforge.io/"
 
   livecheck do
