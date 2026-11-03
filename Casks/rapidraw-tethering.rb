@@ -5,8 +5,7 @@ cask "rapidraw-tethering" do
   sha256 arm:   "71f396a1b085f30ac1ab66d52f08af665f8bba5ba9a8a8aa5cd703afa84e8532",
          intel: "26ceb09e2aedef4cdb1b733798355d3cae1de1ffffc06577b52d2ad9d8f2554e"
 
-  url "https://github.com/CyberTimon/RapidRAW/releases/download/v#{version}/02_tethering_RapidRAW_v#{version}_#{arch}.dmg",
-      verified: "github.com/CyberTimon/RapidRAW/"
+  url "https://github.com/CyberTimon/RapidRAW/releases/download/v#{version}/02_tethering_RapidRAW_v#{version}_#{arch}.dmg"
   name "RapidRAW"
   desc "RAW image editor with USB camera tethering"
   homepage "https://www.getrapidraw.com/"
