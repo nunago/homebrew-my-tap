@@ -16,6 +16,7 @@ cask "rapidraw" do
     strategy :github_latest
   end
 
+  conflicts_with cask: "rapidraw-tethering"
   depends_on macos: :ventura
 
   app "RapidRAW.app"
@@ -28,8 +29,8 @@ cask "rapidraw" do
   zap trash: [
     "~/Library/Application Support/io.github.CyberTimon.RapidRAW",
     "~/Library/Caches/io.github.CyberTimon.RapidRAW",
+    "~/Library/Logs/io.github.CyberTimon.RapidRAW",
     "~/Library/Preferences/io.github.CyberTimon.RapidRAW.plist",
-    "~/Library/Saved Application State/io.github.CyberTimon.RapidRAW.savedState",
     "~/Library/WebKit/io.github.CyberTimon.RapidRAW",
   ]
 end
