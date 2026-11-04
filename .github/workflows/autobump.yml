@@ -22,11 +22,12 @@ jobs:
     runs-on: macos-latest
     permissions:
       contents: write
-      pull-requests: write
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@eb02c69dbabdb66ff183c614f4ce7ab3c077592c # 2026.10.12.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up git
         id: git_setup
@@ -38,4 +39,22 @@ jobs:
           HOMEBREW_GIT_COMMITTER_NAME: ${{ steps.git_setup.outputs.name }}
           HOMEBREW_GIT_COMMITTER_EMAIL: ${{ steps.git_setup.outputs.email }}
           TAP_NAME: ${{ steps.set-up-homebrew.outputs.tap-name }}
-        run: brew bump --no-fork --open-pr --bump-synced --tap="$TAP_NAME"
+          TAP_PATH: ${{ steps.set-up-homebrew.outputs.repository-path }}
+        run: |
+          outdated="$(
+            brew livecheck --tap="$TAP_NAME" --newer-only --json --quiet |
+              jq -r '.[] | select(.version.outdated) | [if .cask then "cask" else "formula" end, .cask // .formula, .version.latest] | @tsv'
+          )"
+
+          failed=0
+          while IFS=$'\t' read -r type name version; do
+            [[ -n "$name" ]] || continue
+            brew "bump-${type}-pr" --write-only --commit --version="$version" "$TAP_NAME/$name" || {
+              echo "::error::Failed to bump $name to $version"
+              git -C "$TAP_PATH" reset --hard HEAD
+              failed=1
+            }
+          done <<< "$outdated"
+
+          git -C "$TAP_PATH" push origin HEAD:main
+          exit "$failed"
