@@ -5,8 +5,7 @@ cask "rapidraw" do
   sha256 arm:   "b3e9c3883686bff3209680bd2e4149b5dfb73df94ed788ec91cf8b3755d1bbca",
          intel: "6d711d4e4b8f1bfe77d2715a169d9e02b5c399977cbcfdff21b840f78b42f24a"
 
-  url "https://github.com/CyberTimon/RapidRAW/releases/download/v#{version}/02_RapidRAW_v#{version}_#{arch}.dmg",
-      verified: "github.com/CyberTimon/RapidRAW/"
+  url "https://github.com/CyberTimon/RapidRAW/releases/download/v#{version}/02_RapidRAW_v#{version}_#{arch}.dmg"
   name "RapidRAW"
   desc "RAW image editor"
   homepage "https://www.getrapidraw.com/"
