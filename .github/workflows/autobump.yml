@@ -56,5 +56,16 @@ jobs:
             }
           done <<< "$outdated"
 
+          if [[ -z "$(git -C "$TAP_PATH" rev-list origin/main..HEAD)" ]]; then
+            echo "Nothing to push"
+            exit "$failed"
+          fi
+
+          # Pushes made with GITHUB_TOKEN don't trigger tests.yml, so run its checks here.
+          brew test-bot --only-tap-syntax --tap="$TAP_NAME" || {
+            echo "::error::Tap syntax checks failed; not pushing bumps"
+            exit 1
+          }
+
           git -C "$TAP_PATH" push origin HEAD:main
           exit "$failed"
