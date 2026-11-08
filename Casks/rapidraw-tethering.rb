@@ -1,9 +1,9 @@
 cask "rapidraw-tethering" do
-  arch arm: "macos-14_aarch64", intel: "macos-15-intel_x64"
+  arch arm: "macos-15_aarch64", intel: "macos-15-intel_x64"
 
-  version "1.6.7"
-  sha256 arm:   "71f396a1b085f30ac1ab66d52f08af665f8bba5ba9a8a8aa5cd703afa84e8532",
-         intel: "26ceb09e2aedef4cdb1b733798355d3cae1de1ffffc06577b52d2ad9d8f2554e"
+  version "1.6.9"
+  sha256 arm:   "4e1a98a9050b65999c61cb0cdfd2c3921c393e1780aa5ad8b59c03f459fc90ef",
+         intel: "c60598794895f75d3bd0dc07a8b5ab97928d924fad17fc65f2f87d9b0edb9fc6"
 
   url "https://github.com/CyberTimon/RapidRAW/releases/download/v#{version}/02_tethering_RapidRAW_v#{version}_#{arch}.dmg"
   name "RapidRAW"
