@@ -1,8 +1,8 @@
 cask "nunago-double-commander" do
   arch arm: "aarch64"
 
-  version "1.2.9"
-  sha256 arm: "6d615ae9d87fe60fed4efbb32fa83b5c21f2bfc007836f3f12e60e599d3447e8"
+  version "1.2.11"
+  sha256 arm: "5fd85c49a968c2fa23bf77561035aaed87924a569cad290dbb278fe483392c3f"
 
   url "https://github.com/doublecmd/doublecmd/releases/download/v#{version}/doublecmd-#{version}.cocoa.#{arch}.dmg"
   name "Double Commander"
